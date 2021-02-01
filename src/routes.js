@@ -1,4 +1,5 @@
 import React from 'react';
+//import CoursReact from './views/coursReact/CoursReact';
 
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
@@ -25,6 +26,10 @@ const ButtonDropdowns = React.lazy(() => import('./views/buttons/button-dropdown
 const ButtonGroups = React.lazy(() => import('./views/buttons/button-groups/ButtonGroups'));
 const Buttons = React.lazy(() => import('./views/buttons/buttons/Buttons'));
 const Charts = React.lazy(() => import('./views/charts/Charts'));
+const TableInCard = React.lazy(() => import('./views/coursReact/TableInCard'));
+const TodoApp = React.lazy(() => import('./views/coursReact/TodoApp'));
+const GotoFetch = React.lazy(() => import('./views/coursReact/GotoFetch'));
+//const Goto = React.lazy(() => import('./views/coursReact/Goto'));
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'));
 const Flags = React.lazy(() => import('./views/icons/flags/Flags'));
@@ -67,6 +72,10 @@ const routes = [
   { path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups },
   { path: '/buttons/brand-buttons', name: 'Brand Buttons', component: BrandButtons },
   { path: '/charts', name: 'Charts', component: Charts },
+  { path: '/tableInCard', name: 'TableInCard', component: TableInCard },
+  { path: '/todoApp', name: 'TodoApp', component: TodoApp },
+  { path: '/gotoFetch', name: 'GotoFetch', component: GotoFetch },
+ // { path: '/goto', name: 'Goto', component: Goto },
   { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
   { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
   { path: '/icons/flags', name: 'Flags', component: Flags },

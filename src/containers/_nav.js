@@ -224,8 +224,43 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavTitle',
+    _children: ['Tuto React'],
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Wrong link',
+    to: '/ediatbaleTables',
+    icon: 'cil-border-all'
+  },  
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Tables editables',
+    to: '/tableInCard',
+    icon: 'cil-building'
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'TodoApp',
+    to: '/todoApp',
+    icon: 'cil-building'
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Goto Holidays',
+    to: '/gotoFetch',
+    icon: 'cil-building'
+  },
+  // {
+  //   _tag: 'CSidebarNavItem',
+  //   name: 'Goto holidays',
+  //   to: '/goto',
+  //   icon: 'cil-building'
+  // },
+  {
+    _tag: 'CSidebarNavTitle',
     _children: ['Extras'],
   },
+
   {
     _tag: 'CSidebarNavDropdown',
     name: 'Pages',
