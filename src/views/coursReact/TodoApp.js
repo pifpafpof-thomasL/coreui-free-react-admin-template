@@ -55,7 +55,7 @@ class TodoApp extends React.Component {
     }
 
     render() {
-      console.log("<TodoApp> this.state", this.state)
+      //console.log("<TodoApp> this.state", this.state)
       //const items = this.state.items
       return (
         <div>

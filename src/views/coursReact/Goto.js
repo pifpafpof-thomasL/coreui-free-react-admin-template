@@ -3,6 +3,12 @@ import { Button, Form } from 'react-bootstrap';
 import {
   CCard, CCardBody, CCardFooter
 } from  '@coreui/react'
+import FetchTemp from './FetchTemp'
+
+import ComponentA from './ComponentA'
+import ComponentB from './ComponentB'
+import SumTemp from './SumTemp'
+
 
 class Goto extends React.Component {
     constructor(props) {
@@ -15,12 +21,13 @@ class Goto extends React.Component {
        };
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+
     }
   
       
     handleChange(e) {
       this.setState({ text: e.target.value });
-      console.log("handleChange value, this.state", e.target.value, this.state)
+      //console.log("handleChange value, this.state", e.target.value, this.state)
     }
   
     handleSubmit(e) {
@@ -37,7 +44,7 @@ class Goto extends React.Component {
         text: ''
       });
 
-      console.log("handleSubmit this.state", this.state)
+      //console.log("handleSubmit this.state", this.state)
     }
 
     handleClickDelMe = (id, e) => {
@@ -53,8 +60,8 @@ class Goto extends React.Component {
     }
 
     render() {
-      console.log("<TodoApp> this.state", this.state)
-      const { items, options }  = this.state
+      //console.log("<TodoApp> this.state", this.state)
+      const { items, text }  = this.state
       return (
         <div>
           <h3>
@@ -67,51 +74,59 @@ class Goto extends React.Component {
               <TodoList toto={items} handleClickDelMe={this.handleClickDelMe} />
 
             </CCardBody>
-            <CCardFooter>Card footer</CCardFooter>
+            <CCardFooter>
+              <Button className="ml-2 " onClick={this.handleClickDeleteAll}>
+                Vider la liste
+              </Button>
+            </CCardFooter>
           </CCard>
         <br/>
 
-          <Form className="mb-20" onSubmit={this.handleSubmit} >
-            <label htmlFor="new-todo">
-              Ou voulez vous aller ?
-            </label>
-            <input 
-              style={{marginLeft: '40px'}}
-              id="new-todo"
-              onChange={this.handleChange}
-              value={this.state.text}
-            />
+        <CCard>
+            <CCardBody>
+              <Form className="mb-20" onSubmit={this.handleSubmit} >
+              <label htmlFor="new-todo">
+                Ou voulez vous aller ?
+              </label>
+              <br/>
 
-            <select value={this.state.text} onChange={this.handleChange} className="mx-5" >
-              <option value="Choisissez" >Choisissez</option>
-              <option selected value="Ouagadougou">Ouagadougou</option> 
-              {this.props.options.map(option=>
-                  <option value={option.capital} >{option.capital}</option>
-                )}
-            </select>
+              <input 
+                style={{marginLeft: '10px'}}
+                id="new-todo"
+                onChange={this.handleChange}
+                value={this.state.text}
+              />
+              <br/>
+              <select className="my-3 ml-2 mx-2" value={this.state.text} onChange={this.handleChange} >
+                <option defaultValue value="DemoCapital">Ouagadougou</option> 
+                {this.props.options.map((option,i)=>
+                    <option key={option.capital+i} value={option.capital} >{option.capital}</option>
+                  )}
+              </select>
 
-            <Button onClick={this.handleSubmit}>
-              Ajouter un item #{this.state.items.length + 1}
-            </Button>
-            <br/>
+              <FetchTemp city={text} />
 
-            {/* <ul>
-              {options
-                .filter(item => item.capital)
-                .map (item=> (
-                <li key={item.id}>
-                  {item.capital} {item.timezones}
-                </li>
-              ))}
-            </ul> */}
+              <Button className="ml-2"  onClick={this.handleSubmit}>
+                Ajouter un item #{this.state.items.length + 1}
+              </Button>
+              <br/>
 
-          </Form>
+            </Form>
 
-          <Button onClick={this.handleClickDeleteAll}>
-              Vider la liste
-          </Button>
+
+            </CCardBody>
+            <CCardFooter>
+              <SumTemp/>
+            </CCardFooter>
+          </CCard>
+          
           <br/>
-
+          <CCard>
+            <CCardBody>
+                <ComponentA/>
+                <ComponentB/>
+            </CCardBody>
+          </CCard>
         </div>
       );
     }
@@ -128,30 +143,22 @@ class Goto extends React.Component {
   class TodoList extends React.Component {
 
     // interdit de mettre à jour les props (ils sont en lecture seuls)
-    // handleClickDelMe = (id, e) => {
-    //   console.log("handleClickDelMe", id)
-    //   const array = this.props.itemsProps
-    //   const index = array.findIndex(arrayItem=> arrayItem.id === id);
-    //   if (index > -1) {
-    //     array.splice(index, 1);
-    //   }      
-    //   // this.setState({   // does not exist
-    //   //   items: array
-    //   // });
-    // }
-
     render() {
       return (
-        <ul>
-          {this.props.toto
-              .map(item => (
-              <li key={item.id}>{item.text}
-                <Button className="mx-5 mt-2" onClick={()=>this.props.handleClickDelMe(item.id)}>
-                  Del me
-                </Button>
-              </li>          
-            ))}
-        </ul>
+        <div>
+          <ul>
+            {this.props.toto
+                .map(item => (
+                <li key={item.id}>{item.text}
+                  <FetchTemp city={item.text} save />
+                  <Button className="mx-5 mt-2" onClick={()=>this.props.handleClickDelMe(item.id)}>
+                    Del me
+                  </Button>
+                </li>          
+              ))}
+          </ul>
+        </div>
+
       );
     }
   }

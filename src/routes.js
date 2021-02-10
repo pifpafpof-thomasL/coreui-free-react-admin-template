@@ -28,7 +28,7 @@ const Buttons = React.lazy(() => import('./views/buttons/buttons/Buttons'));
 const Charts = React.lazy(() => import('./views/charts/Charts'));
 const TableInCard = React.lazy(() => import('./views/coursReact/TableInCard'));
 const TodoApp = React.lazy(() => import('./views/coursReact/TodoApp'));
-const GotoFetch = React.lazy(() => import('./views/coursReact/GotoFetch'));
+const GotoFetch = React.lazy(() => import('./views/coursReact/GotoFetchHooks'));
 //const Goto = React.lazy(() => import('./views/coursReact/Goto'));
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'));
